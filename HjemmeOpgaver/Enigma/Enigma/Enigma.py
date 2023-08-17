@@ -1,8 +1,8 @@
-operation = 'ENCODE'
-#operation = 'DECODE'
+#operation = 'ENCODE'
+operation = 'DECODE'
 shift = 4
 rotors = ['BDFHJLCPRTXVZNYEIWGAKMUSQO', 'AJDKSIRUXBLHWTMCQGZNPYFVOE', 'EKMFLGDQVZNTOWYHXUSPAIBRCJ']
-message = 'AAA'
+message = 'KQF'
 result = ''
 alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'*3
 
@@ -38,7 +38,7 @@ def de_do_rotor(coded_message, rotor):
 	res='' 
 	for letter in coded_message:
 		res += alpabet_func(letter, rotor)
-		print(res)
+		print(letter, res)
 	return res
 
 def encode(message, shift):
@@ -48,12 +48,11 @@ def encode(message, shift):
 	return message
 	
 def decode(message, shift):
-	message = caeser_decode(message, shift)
-	print(message)
 	rotors.reverse()
 	print(rotors)
-	for rotor in rotors:
+	for rotor in range(len(rotors)-1):
 		message = de_do_rotor(message, rotor)
+	message = caeser_decode(message, shift)
 	return message
 
 def solution():
