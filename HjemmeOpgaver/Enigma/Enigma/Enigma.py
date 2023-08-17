@@ -1,66 +1,42 @@
-#operation = 'ENCODE'
-operation = 'DECODE'
-shift = 4
-rotors = ['BDFHJLCPRTXVZNYEIWGAKMUSQO', 'AJDKSIRUXBLHWTMCQGZNPYFVOE', 'EKMFLGDQVZNTOWYHXUSPAIBRCJ']
-message = 'KQF'
-result = ''
-alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'*3
+import sys;		import string
+operation = 'ENCODE'
+shift = 9
+rotors = ['BDFHJLCPRTXVZNYEIWGAKMUSQO','AJDKSIRUXBLHWTMCQGZNPYFVOE','EKMFLGDQVZNTOWYHXUSPAIBRCJ']
+message='PQSACVVTOISXFXCIAMQEM'
+alphabet = string.ascii_uppercase
 
-def caeser_encode(message, shift):
-	global alphabet
-	result = [alphabet[alphabet.index(letter)+shift+i] for i, letter in enumerate(message)]
-	print(result)
-	return result
+"""operation = input()
+shift = int(input())
+rotors=[]
+for i in range(3):    rotors.append(input())
+message=input()
+print(shift, message, file=sys.stderr, flush=True)"""
+#input collection from coding game system. if you are going to use it locally, ignore or delete this part.
 
-def caeser_decode(messagecoded, shift):
-	global alphabet
-	result = [alphabet[alphabet.index(letter)-shift-i] for i, letter in enumerate(message)]
-	return result
-
-
-
-def rotor_func(c: str, rotor: str):
-	return rotor[alphabet.index(c)]
-
-def do_rotor(message, rotor):
-	res = ''
-	for letter in message:
-		res += rotor_func(letter, rotor)
-	return res
-
-#[abc[cipher.index(c)] for c in 'KLMXYZ']
-#['A', 'B', 'C', 'N', 'O', 'P']
-
-def alpabet_func(c:str, rotor:str):
-	return alphabet[rotor.index(c)]
-
-def de_do_rotor(coded_message, rotor):
-	res='' 
-	for letter in coded_message:
-		res += alpabet_func(letter, rotor)
-		print(letter, res)
-	return res
-
-def encode(message, shift):
-	message = caeser_encode(message, shift)
-	for rotor in rotors:
-		message = do_rotor(message, rotor)
-	return message
-	
-def decode(message, shift):
-	rotors.reverse()
-	print(rotors)
-	for rotor in range(len(rotors)-1):
-		message = de_do_rotor(message, rotor)
-	message = caeser_decode(message, shift)
-	return message
-
-def solution():
-
+def caeser_cipher(message, shift, operation):
 	if operation == 'ENCODE':
-		result = encode(message, shift)
+		result = [alphabet[(alphabet.index(letter)+shift+i)%26] for i, letter in enumerate(message)]
 	else:
-		result = decode(message, shift)
-	print(''.join(result))
+		result = [alphabet[(alphabet.index(letter)-shift-i)%26] for i, letter in enumerate(message)]
+	return ''.join(result)
 
-solution()
+def do_rotor(message, rotor, operation):
+	res = ''
+	if operation == 'ENCODE':
+		for letter in message:
+			res += rotor[alphabet.index(letter)]
+	else:
+		for letter in message:
+			res += alphabet[rotor.index(letter)]
+	return res
+
+if operation == "ENCODE":
+	message = caeser_cipher(message, shift, operation)
+	for rotor in rotors:
+		message = do_rotor(message, rotor, operation)
+else:
+	rotors.reverse()
+	for rotor in rotors:
+		message = do_rotor(message, rotor, operation)
+	message = caeser_cipher(message, shift, operation)
+print(message)
