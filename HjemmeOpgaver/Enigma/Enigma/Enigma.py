@@ -21,14 +21,14 @@ def caeser_cipher(message, shift, operation):
 	return ''.join(result)
 
 def do_rotor(message, rotor, operation):
-	res = ''
+	result = ''
 	if operation == 'ENCODE':
 		for letter in message:
-			res += rotor[alphabet.index(letter)]
+			result += rotor[alphabet.index(letter)]
 	else:
 		for letter in message:
-			res += alphabet[rotor.index(letter)]
-	return res
+			result += alphabet[rotor.index(letter)]
+	return result
 
 if operation == "ENCODE":
 	message = caeser_cipher(message, shift, operation)
