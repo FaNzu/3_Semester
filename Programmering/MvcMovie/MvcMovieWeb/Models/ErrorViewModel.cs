@@ -1,4 +1,4 @@
-namespace ClimbingCollectionWeb.Models
+namespace MvcMovieWeb.Models
 {
     public class ErrorViewModel
     {

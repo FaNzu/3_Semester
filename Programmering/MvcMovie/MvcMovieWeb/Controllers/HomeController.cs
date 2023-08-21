@@ -1,8 +1,8 @@
 ﻿using System.Diagnostics;
-using ClimbingCollectionWeb.Models;
 using Microsoft.AspNetCore.Mvc;
+using MvcMovieWeb.Models;
 
-namespace ClimbingCollectionWeb.Controllers
+namespace MvcMovieWeb.Controllers
 {
     public class HomeController : Controller
     {
