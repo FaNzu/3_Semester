@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>-</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height; auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="enigma-introduction">Enigma introduction</h1>
+<p>During my freetime ive found interest in encryption stuff, and a
+classic one is the enigma problem. I am taking version which is
+introduced on <a
+href="https://www.codingame.com/training/easy/encryptiondecryption-of-enigma-machine"
+title="Encryption/Decryption of Enigma Machine">Codinggame</a>. It is
+quite simplier than the real thing, but still a good challenge to crack.
+I suggest you go giving it a try before looking at my explation and
+solution.</p>
+<h2 id="the-real-engima">The real engima</h2>
+<p>TBD # Explanation</p>
+<h2 id="the-goal-of-the-game">The goal of the game</h2>
+<p>Our machine will be a basic version of the real thing.</p>
+<p>The first step of the encryption is a <strong>caesar shift</strong>
+of the <em>message</em>. Meaning that a simple message of <em>AAA</em>
+the oiutput will be <em>EFG</em></p>
+<p><em>A + 4 = E</em></p>
+<p><em>A + 4 + 1 = F</em></p>
+<p><em>A + 4 +1 +1 = G</em></p>
+<p>After the caeser shift, the next step will be to use some rotors
+delivered to the user. A rotor is a randomized alphabet, which will be
+used to encrypt the message even further.</p>
+<p>A total of 3 rotors will be used, an example of this could be
+<code>BDFHJLCPRTXVZNYEIWGAKMUSQO</code>. This will be used like a
+secondary alphabet which we will compare to.</p>
+<p>Now map <em>EFG</em> to first ROTOR such as:
+<code>ABCDEFGHIJKLMNOPQRSTUVWXYZ</code>
+<code>BDFHJLCPRTXVZNYEIWGAKMUSQO</code></p>
+<p>So <em>EFG</em> becomes <strong><em>JLC</em></strong>, as the letters
+directly under <em>EFG</em>. This is a bit trickerier to program than
+the caeser. But this was just the first of 3 rotors.</p>
+<p>If the <em>second ROTOR</em> is
+<code>AJDKSIRUXBLHWTMCQGZNPYFVOE</code>, we apply the substitution step
+again thus:</p>
+<p><code>ABCDEFGHIJKLMNOPQRSTUVWXYZ</code>
+<code>AJDKSIRUXBLHWTMCQGZNPYFVOE</code></p>
+<p>So <em>JLC</em> becomes <strong><em>BHD</em></strong></p>
+<p><code>ABCDEFGHIJKLMNOPQRSTUVWXYZ</code>
+<code>EKMFLGDQVZNTOWYHXUSPAIBRCJ</code></p>
+<p><em>BHD</em> becomes <strong><em>KQF</em></strong> the final answer
+to <em>AAA</em> when it come through the whole encryption</p>
+<h3 id="caeser-cipher">Caeser Cipher</h3>
+<p>This is a classic encryption technic, we have to shift the
+<em>letter</em> a certain distance in the alphabet. In the example
+above, we have to shift it 4 places. And end up <em>E</em>, and in this
+encryption theres a spin on it. We also have to increment the shift with
+1 for each <em>letter</em> shiftet. So the same <em>letter</em> will
+never be the same.</p>
+<h3 id="rotor-cipher">Rotor Cipher</h3>
+<p>This is an encryption technic used masterfully in the enigma machine.
+And the author of this challange has a rather simple and elegant
+implemtation of it.</p>
+<p>The basics are that we have a normal alphabet and a rotor. We take
+our <em>Caeser</em> encrypted <em>message</em> and find the index of the
+each letter of the message. We then find the same index of out rotor and
+the letter in that placement is our Rotor encrypted message.</p>
+<pre><code>    EFG
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+    |||
+    vvv
+BDFHJLCPRTXVZNYEIWGAKMUSQO
+    JLC</code></pre>
+<p><em>Do note that this will be perfomed 3 times total with different
+rotors.</em></p>
+<h2 id="my-solution-to-the-problem">My solution to the problem</h2>
+<p>Ill be making both a <em>python</em> and <em>C#</em> solution for
+this project. As those are both langauges i know. Both will have ups and
+downs for this. In this <strong>explanation</strong> ill be using
+<em>python</em> as an example. But will include a <em>C#</em> section
+where ill go through any changes needed to be done.</p>
+<p>The input we are reciving is compromised 6 lines. - The very first
+line declares if we are decoding or encoding the message. So the only 2
+possible states are <code>ENCODE</code> or <code>DECODE</code>. - The
+second line is an <em>integer</em> that describes how much we have to
+shift the alpabet in the <em>Caeser</em> cipher - The next 3 lines, are
+the rotors we are provided. A rotor is defined as an alphabet that has
+randomized the postion of the letters. As an example these are the 3
+rotors used in the introduction.</p>
+<pre><code>BDFHJLCPRTXVZNYEIWGAKMUSQO
+AJDKSIRUXBLHWTMCQGZNPYFVOE
+EKMFLGDQVZNTOWYHXUSPAIBRCJ</code></pre>
+<ul>
+<li>and the last input we are recieving are the message itself. This
+could be anything, as long its in the string type. And all letters in
+the message is in uppercase. Both of these restrictions are from the
+constraints given to us in the game description.</li>
+</ul>
+<h3 id="python-code">Python code</h3>
+<p>The first thing we are going to do, is seperate the <em>ENCODING</em>
+and <em>DECODING</em> section of the code. As the things we have to do
+is in different timelines.</p>
+<pre><code>if operation == &quot;ENCODE&quot;:
+    message = caeser_cipher(message, shift, operation)
+    for rotor in rotors:
+        message = do_rotor(message, rotor, operation)
+else:
+    pass</code></pre>
+<p>Now that we have seperated the 2 sections, we can do the caeser
+cipher. As that is the first part of the <em>encoding</em> the message.
+As explaned in an earlier section this will shift the letters in the
+message. <strong>CAESER CIPHER</strong></p>
+<pre><code>def caeser_cipher(message, shift, operation):
+    if operation == &#39;ENCODE&#39;:
+        for i, letter in enumerate(message):
+            result = [alphabet[(alphabet.index(letter)+shift+i)%26]]
+    else:
+        for i, letter in enumerate(message):
+            result = [alphabet[(alphabet.index(letter)-shift-i)%26]]
+    return &#39;&#39;.join(result)</code></pre>
+<p>Alot of things are happening in this function at a glance. But ill do
+my best to break it down.</p>
+<p>Our inputs are the <em>message</em> itself, lets use
+<strong>‘AAA’</strong> as an example. The amount it has to be shifted
+and lastly the operation we’ll be perfoming. Because the very next thing
+we check in a if statement, is which of the operations we’ll perfome.
+<em>For now lets stick with Encoding</em></p>
+<p>In my solution to this problem, i have a temporary list for my
+resuts. This is done as, all the letters will be outputed indivially.
+And so we’ll collect them in a list and return them in a collected
+string.</p>
+<p>If we digest the <em>Encoding</em> line down to its basics, we are
+perfoming a for loop, for which we do the shift. In this for loop, we
+are the function <em>Enumerate</em>. To both recieve the index and the
+letter itself from the placement in the <em>message</em>. This is very
+useful, but as ill show in my c# code. It can be done manually.</p>
+<p>Lets take a closer look at
+<code>[alphabet[(alphabet.index(letter+shift+i)%26]</code> and
+understand what is happening here. Lets understand the index part first,
+as we’ll have to find the index of out letter. We’ll search for it with
+the index function of the string type. Our string is called alphabet, is
+just a uppercase alphabet. If we use the <strong>AAA</strong> example as
+before. The very first letter will be <strong>A</strong>, and its index
+are 1 in the english alphabet.</p>
+<p>If we change the code <code>[alphabet[(1+shift+i)%26]</code>, the
+next thing we can look at is the shift. Ill be using the same example as
+before, which was integer 4. And lastly we have the extra shift, we had
+to do for each letter. As we havent done a shift yet it is still 0.</p>
+<p><code>[alphabet[(1+4+0)%26]</code> is our new function. The last bit
+<code>%26</code> is a math operation called <em>modulo</em>. It returns
+the remainder, after 2 numbers are divided. As the english alphabet is
+26 letters long, we’ll use that. What this means in practice, is if we
+have a number that has an index thats over the length of the alphabet.
+It’ll decrease the number back to be within the range of the alphabet.
+<em>Example: 27%26=1</em></p>
+<p>We finally have our new letter for our encryption. As such we’ll have
+to do this for all letters in the message itself.</p>
+<p><strong>ROTOR CIPHER</strong></p>
+<pre><code>def do_rotor(message, rotor, operation):
+    result = &#39;&#39;
+    if operation == &#39;ENCODE&#39;:
+        for letter in message:
+            result += rotor[alphabet.index(letter)]
+    else:
+        for letter in message:
+            result += alphabet[rotor.index(letter)]
+    return result</code></pre>
+<p>Our <em>rotor</em> function is really similar to the <em>Caeser</em>
+function. Intead of recieving a number, we are recieving the rotor.
+Which was the randomized alphabet. Next up we create an empty string,
+within this scope we can use for store the <em>encoded</em> message.
+After that we check if we are supposed to <em>decode</em> or
+<em>encode</em>. As before, i’ll be showing the <em>encoding</em>
+example for now.</p>
+<pre><code>for letter in message:
+            result += rotor[alphabet.index(letter)]</code></pre>
+<p>for each letter in our message, we’ll exchange the letter. We will
+agian be using the index function to find the number index of our
+letter. And replace it with the <em>rotor</em> letter with the same
+index. And add it to the string, on the last place on the string.</p>
+<p><strong><em>DECODING CHANGES</em></strong> As the decoding part is
+the oppesite of what, we have just been doing. We’ll do the <em>caeser
+cipher</em> and <em>rotor cipher</em> in the reversed order. Another
+consideration is that the rotors, has to be applied in the reversed
+other too. As such we calls the list <code>.reversed()</code> function.
+It simply reverses the order (a,b,c) -&gt; (c,b,a).</p>
+<p>In our <em>Caeser cipher</em>, we have to remove the shift we added
+before. As such we have to minus instead of adding the <em>shift</em>
+and <em>indexnumber</em></p>
+<pre><code>This:
+(alphabet.index(letter)+shift+i)%26
+Becomes:
+(alphabet.index(letter)-shift-i)%26</code></pre>
+<p>in the <em>rotor function</em> we have to go from the rotor index to
+the alphabet index.</p>
+<pre><code>This:
+result += rotor[alphabet.index(letter)]
+Becomes:
+result += alphabet[rotor.index(letter)]  </code></pre>
+<h2 id="c-code">C# code</h2>
+<p>TBD</p>
+</body>
+</html>

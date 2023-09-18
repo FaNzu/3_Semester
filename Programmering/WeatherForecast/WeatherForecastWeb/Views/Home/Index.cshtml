@@ -1,0 +1,41 @@
+﻿@model WeatherForecastWeb.Models.Root
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<body>
+    <h1>Weather Forecast for @Html.DisplayFor(model => model.name)</h1>
+    
+    <h2>Location</h2>
+    <p>Latitude: @Html.DisplayFor(model => model.coord.lat)</p>
+    <p>Longitude: @Html.DisplayFor(model => model.coord.lon)</p>
+    
+    <h2>Weather</h2>
+    @foreach (var weather in Model.weather)
+    {
+        <p>Condition: @weather.main</p>
+        <p>Description: @weather.description</p>
+        <img src=@string.Format("https://openweathermap.org/img/wn/{0}@2x.png", weather.icon) alt="Weather Icon" />
+    }
+    <h2>Main Information</h2>
+    <p>Temperature: @Model.main.temp &deg;C</p>
+    <p>Feels Like: @Model.main.feels_like &deg;C</p>
+    <p>Min Temperature: @Model.main.temp_min &deg;C</p>
+    <p>Max Temperature: @Model.main.temp_max &deg;C</p>
+    <p>Pressure: @Model.main.pressure hPa</p>
+    <p>Humidity: @Model.main.humidity %</p>
+
+    <h2>Wind</h2>
+    <p>Speed: @Model.wind.speed m/s</p>
+    <p>Degree: @Model.wind.deg &deg;</p>
+
+    <h2>Clouds</h2>
+    <p>Cloudiness: @Model.clouds.all %</p>
+
+    <h2>Additional Information</h2>
+    <p>Visibility: @Model.visibility meters</p>
+    <p>Sunrise: @System.DateTimeOffset.FromUnixTimeSeconds(Model.sys.sunrise).ToLocalTime()</p>
+    <p>Sunset: @System.DateTimeOffset.FromUnixTimeSeconds(Model.sys.sunset).ToLocalTime()</p>
+
+</body>
