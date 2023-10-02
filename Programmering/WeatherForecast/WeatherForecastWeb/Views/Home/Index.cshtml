@@ -17,7 +17,7 @@
     
     <h2>Weather</h2>
     @foreach (var weather in Model.weather)
-    {
+    { 
         <p>Condition: @weather.main</p>
         <p>Description: @weather.description</p>
         <img src=@string.Format("https://openweathermap.org/img/wn/{0}@2x.png", weather.icon) alt="Weather Icon" />
