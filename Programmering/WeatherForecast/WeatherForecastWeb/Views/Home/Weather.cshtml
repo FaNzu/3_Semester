@@ -1,13 +1,53 @@
 ﻿@model WeatherForecastWeb.Models.Root
 
 @{
-    ViewData["Title"] = "Home Page";
+    
+    ViewData["Title"] = "weather Page";
+    ViewData["CurrentFilter"] = "CategoryChosen";
+
 }
 
 <body>
-    Welcome go to /weather to get forecast
+    <form asp-action="Weather" method="get">
+        <div class="form-actions no-color">
+            <p>
+                how many days: <input type="text" name="amountDays" value="@ViewData["amountDays"]" />
+            </p>
+        </div>
+        <div>
+            @using (Html.BeginForm("CategoryChosen", "Home", FormMethod.Get))
+            {
+                <fieldset>
+                    Unit Type
+                    @Html.DropDownList("currentfilter")
+                    <p>
+                        <input type="submit" value="Submit" />
+                    </p>
+                </fieldset>
+            }
+        </div>
+    </form>
+    
 
-
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Temperature (°C)</th>
+                <th>Picture</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.list)
+            {
+                <tr>
+                    <td>@item.dt_txt</td>
+                    <td>@item.main.temp</td>
+                    <td><img src=@string.Format($"https://openweathermap.org/img/wn/{@item.weather[0].icon}.png") alt="Weather Icon" /></td>
+                </tr>
+            }
+        </tbody>
+    </table>
 
     @*<h1>Weather Forecast for @Html.DisplayFor(model => model.name)</h1>
     

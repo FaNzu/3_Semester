@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using WeatherForecastWeb.Models;
 
 namespace WeatherForecastWeb.Controllers
@@ -17,23 +18,49 @@ namespace WeatherForecastWeb.Controllers
 			_logger = logger;
 
 		}
-		public async Task<IActionResult> Index()
+		public IActionResult Index()
 		{
-            using HttpResponseMessage response = await client.GetAsync("https://api.openweathermap.org/data/2.5/weather?q=Kairo&APPID=5a84ff852b810936feb63cdb21d18b9f");
+			return View();
+        }
+
+        public async Task<IActionResult> Weather(int? amountDays, string? currentfilter)
+		{
+            ViewData["amountDays"] = amountDays;
+            ViewData["CurrentFilter"] = CategoryChosen(currentfilter);
+            List<SelectListItem> unitItems = new List<SelectListItem>();
+
+            unitItems.Add(new SelectListItem { Text = "Metric", Value = "metric" });
+            unitItems.Add(new SelectListItem { Text = "Imperial", Value = "imperial" });
+            unitItems.Add(new SelectListItem { Text = "scientific", Value = "standard" });
+            ViewBag.UnitType = unitItems;
+
+            if (amountDays==null || amountDays<=0){
+                amountDays = 8;
+            }
+			else if (amountDays > 5)
+			{
+				amountDays = 5*8;
+			}
+			else { amountDays*=8; }
+
+			if (currentfilter == null) 
+				currentfilter = "metric";
+            using HttpResponseMessage response = await client.GetAsync($"https://localhost:7293/WeatherForecast?days={amountDays}&unitType={currentfilter}");
             response.EnsureSuccessStatusCode();
             string responseBody = await response.Content.ReadAsStringAsync();
 
-            //Console.WriteLine(responseBody);
+            Root? weatherForecast = JsonSerializer.Deserialize<Root>(responseBody);
 
-            Root? weatherForecast =
-                JsonSerializer.Deserialize<Root>(responseBody.ToString());
+            // Extract the city information
+            City cityInfo = weatherForecast.city;
 
+            // Handle the list of weather data
+            List<List> weatherData = weatherForecast.list;
 
-            //Console.WriteLine(weatherForecast);
             return View(weatherForecast);
-		}
+        }
 
-		public IActionResult Privacy()
+        public IActionResult Privacy()
 		{
 			return View();
 		}
@@ -43,5 +70,10 @@ namespace WeatherForecastWeb.Controllers
 		{
 			return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
 		}
-	}
+
+        List<Category> ConvertCategoryToList(IEnumerable<Category> dt)
+        {
+            return dt.ToList();
+        }
+    }
 }
