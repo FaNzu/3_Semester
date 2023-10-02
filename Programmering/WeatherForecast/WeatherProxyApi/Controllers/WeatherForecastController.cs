@@ -20,7 +20,7 @@ namespace WeatherProxyApi.Controllers
         [HttpGet(Name = "GetWeatherForecast")]
         public async Task<IActionResult> Get(int days, string unitType)
         {
-            using HttpResponseMessage response = await client.GetAsync($"https://api.openweathermap.org/data/2.5/forecast?lat=10.38831&lon=55.39594&cnt={days}&units={unitType}&appid=5a84ff852b810936feb63cdb21d18b9f");
+            using HttpResponseMessage response = await client.GetAsync($"https://api.openweathermap.org/data/2.5/forecast?lat=10.38831&lon=55.39594&cnt={days}&units={unitType}&appid=");//put api key here
             response.EnsureSuccessStatusCode();
             string responseBody = await response.Content.ReadAsStringAsync();
             return Ok(responseBody);
