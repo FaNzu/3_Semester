@@ -21,9 +21,9 @@ _Translated Teknologi means technology_
 ## Projects
 
  - [ ] Semester project
- - [ ] Enigma Decrypter/incrypter
+ - [x] Enigma Decrypter/incrypter
  - [ ] Unity Game
- - [ ] Own website
+ - [x] Own website
  
  ## lincesing
  You are allowed to use and copy my stuff for personal stuff. If needed for other things such as commecial, please contact me before use. 
