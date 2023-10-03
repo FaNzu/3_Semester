@@ -3,11 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Budweg.Model;
 
 namespace Budweg.View
 {
     public class UnderMenu
     {
+        public Employee registreEmployee()
+        {
+            Employee employee = new Employee();
+            Console.WriteLine("skriv dinne log in");
+            Console.Write("id: ");
+            employee.Id = int.Parse(Console.ReadLine());
+            Console.Write("firstname: ");
+            employee.FirstName = Console.ReadLine();
+            Console.Write("lastname: ");
+            employee.LastName = Console.ReadLine();
+            return employee;//employee i registre
+        }
+
         public bool flowValid()
         {
             string placement = "flow";
@@ -16,13 +30,14 @@ namespace Budweg.View
             switch (test)
             {
                 case "1":
-                    Console.WriteLine(placement, "vaske"); //employee
+                    Console.WriteLine(placement + "vaske"); //employee
+                    Console.ReadLine();
                     break;
                 case "2":
-                    Console.WriteLine(placement, "renser"); //employee
+                    Console.WriteLine(placement + "renser"); //employee
                     break;
                 case "3":
-                    Console.WriteLine(placement, "pakkeriet"); //employee
+                    Console.WriteLine(placement + "pakkeriet"); //employee
                     break;
                 default:
                     Console.WriteLine("ikke gyldig");
@@ -38,13 +53,35 @@ namespace Budweg.View
             switch (test)
             {
                 case "1":
-                    Console.WriteLine(placement, "hr"); //employee
+                    Console.WriteLine(placement + "hr"); //employee
                     break;
                 case "2":
-                    Console.WriteLine(placement, "ceo"); //employee
+                    Console.WriteLine(placement + "ceo"); //employee
                     break;
                 case "3":
-                    Console.WriteLine(placement, "bogholder"); //employee
+                    Console.WriteLine(placement + "bogholder"); //employee
+                    break;
+                default:
+                    Console.WriteLine("ikke gyldig");
+                    return false;
+            }
+            return true; //if valid undermenu return, ellers nej   
+        }
+        public bool kantinenValid()
+        {
+            string placement = "kantinen";
+            Console.WriteLine("1: opvasker\n2: assistent\n3: kok");
+            string test = Console.ReadLine();
+            switch (test)
+            {
+                case "1":
+                    Console.WriteLine(placement + "opvasker"); //employee
+                    break;
+                case "2":
+                    Console.WriteLine(placement + "assistent"); //employee
+                    break;
+                case "3":
+                    Console.WriteLine(placement + "kok"); //employee
                     break;
                 default:
                     Console.WriteLine("ikke gyldig");

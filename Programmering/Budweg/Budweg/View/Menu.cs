@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Budweg.Model;
 
 namespace Budweg.View
 {
@@ -10,8 +11,17 @@ namespace Budweg.View
     {
         public bool showMenu()
         {
+            Console.Clear();
             Console.WriteLine("Her er en menu");
             UnderMenu underMenu = new UnderMenu();
+            List<Employee> employees = new List<Employee>();
+            Employee _employee = underMenu.registreEmployee();//undermenu metode
+            employees.Add(_employee);
+            for (int i = 0; i < employees.Count(); i++)
+            {
+                Console.WriteLine(employees[i].FullName);
+            }
+            Console.ReadKey();
             //if else switch menupunkter 
             Console.WriteLine("1: flow\n2: kontor\n3:kantinen med morten");
             string test = Console.ReadLine();
@@ -22,15 +32,16 @@ namespace Budweg.View
                     underMenu.flowValid();//flow
                     break;
                 case "2":
-                    underMenu.flowValid();//kontor
+                    underMenu.officeValid();//kontor
                     break;
                 case "3":
-                    underMenu.flowValid();//kantinen
+                    underMenu.kantinenValid();//kantinen
                     break;
                 default:
                     Console.WriteLine("ikke gyldig");
                     return false;
             }
+
             return valid;
         }
     }
