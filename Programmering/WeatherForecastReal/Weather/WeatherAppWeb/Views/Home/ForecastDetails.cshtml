@@ -1,0 +1,37 @@
+﻿@model ForecastResultVM
+
+@{
+    ViewData["Title"] = Model.city.name;
+}
+
+<div>
+    @if (Model != null)
+    {
+        <div>
+            <h1 class="text-center display-6">Forecast for @Model.CityName, @Model.RegionName, @Model.CountryName!</h1>
+            <hr />
+            <table class="table">
+                <tr>
+                    <th>Date</th>
+                    <th>@Html.DisplayNameFor(model => model.weatherList![0].weatherType![0].description)</th>
+                    <th>@Html.DisplayNameFor(model => model.weatherList![0].weatherMain.temp)</th>
+                </tr>
+                @foreach (var item in Model.weatherList!)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.timeOfData)
+                        </td>
+                        <td>
+                            <img src="@item.weatherType![0].IconUrl" height="40" width="40">
+                            @Html.DisplayFor(modelItem => item.weatherType![0].description)
+                        </td>
+                        <td>
+                            <p>@Html.DisplayFor(modelItem => item.weatherMain.temp) <i>(Feels like @Html.DisplayFor(modelItem => item.weatherMain.feels_like))</i></p>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    }
+</div>

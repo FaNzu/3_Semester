@@ -1,0 +1,32 @@
+﻿@model ForecastRequestVM;
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-2">Enter details here</h1>
+    <br />
+    <div style="width: 50%; margin:auto">
+        <form asp-action="Forecast">
+            <div class="text-start">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            </div>
+            <div class="form-group">
+                <label asp-for="CityName" class="control-label"></label><label style="color: red">*</label>
+                <input asp-for="CityName" class="form-control" />
+                <span asp-validation-for="CityName" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="UnitType" class="control-label"></label>
+                <input asp-for="UnitType" class="form-control" />
+                <span asp-validation-for="UnitType" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="See weather forecast" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

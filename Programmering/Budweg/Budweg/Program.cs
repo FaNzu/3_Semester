@@ -5,7 +5,11 @@
         static void Main(string[] args)
         {
             Menu menu = new Menu();
-            menu.showMenu();
+            while (true)
+            {
+                menu.showMenu();
+
+            }
 
 
             //logik der tæller med medarbejder
