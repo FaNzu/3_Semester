@@ -12,7 +12,7 @@ namespace Budweg
         {
             Console.WriteLine("Her er en menu");
             UnderMenu underMenu = new UnderMenu();
-            //if else switch menupunkter
+            //if else switch menupunkter 
             Console.WriteLine("1: flow\n2: kontor\n3:kantinen");
             string test = Console.ReadLine();
             bool valid = false;
@@ -29,7 +29,7 @@ namespace Budweg
                     break;
                 default:
                     Console.WriteLine("ikke gyldig");
-                    break;
+                    return false;
             }
             return valid;
         }
