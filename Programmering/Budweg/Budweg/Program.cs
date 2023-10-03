@@ -1,4 +1,6 @@
-﻿namespace Budweg
+﻿using Budweg.View;
+
+namespace Budweg
 {
     internal class Program
     {
