@@ -13,7 +13,7 @@ namespace Budweg
             Console.WriteLine("Her er en menu");
             UnderMenu underMenu = new UnderMenu();
             //if else switch menupunkter 
-            Console.WriteLine("1: flow\n2: kontor\n3:kantinen");
+            Console.WriteLine("1: flow\n2: kontor\n3:kantinen med morten");
             string test = Console.ReadLine();
             bool valid = false;
             switch (test)
