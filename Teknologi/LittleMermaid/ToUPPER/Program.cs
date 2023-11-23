@@ -49,16 +49,12 @@ namespace ToUPPER
 
 						foreach(char c in charbuf) 
 						{
-							char test = Char.ToUpper(c);
+							char test = char.ToUpper(c);
 							sw.Write(test);
 						}
 
 					}
 				}
-				//Create StreamReader and StreamWrite so the method runs asynchronously
-				//as soon as the StreamWriter is created.
-				//Read file into charbuf, convert to upper case and write using the 
-				//StreamWriter exactly as before
 
 				#region opgave 3
 				//using (StreamReader sr = fi.OpenText()) //åbner fil

@@ -1,0 +1,21 @@
+﻿@page "/counter"
+<PageTitle>Counter</PageTitle>
+
+<h1>Counter</h1>
+
+<p role="status">Current count: @currentCount</p>
+
+<input @bind="Model" />
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+@code {
+    [Parameter]
+    public int Model { get; set; }
+    private int currentCount = 10;
+
+    private void IncrementCount()
+    {
+        currentCount = currentCount * Model;
+    }
+}
