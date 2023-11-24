@@ -9,6 +9,8 @@
 *.user
 *.sln.docstates
 BeginnerSoftwareEngineering.pdf
+/Datamatiker/
+/Datamatiker/.obsidian/
 
 # Build results
 

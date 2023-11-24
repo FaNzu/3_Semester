@@ -22,7 +22,7 @@ Console.WriteLine($"Execution Time: {watch.ElapsedMilliseconds} ms for loop"); /
 
 watch.Restart();
 
-AnsiConsole.MarkupLine($"[green]is 2,147,483,647 a prime: {calc.Isprime(2147483647)}[/]"); //calculate the largest 32 bit prime number
+AnsiConsole.MarkupLine($"[green]is 4294967291 a prime: {calc.Isprime(4294967291)}[/]"); //calculate the largest 32 bit prime number
 watch.Stop();//turn off timer
 
 Console.WriteLine($"Execution Time: {watch.ElapsedMilliseconds} ms"); //print timer
@@ -30,8 +30,6 @@ Console.WriteLine($"Execution Time: {watch.ElapsedMilliseconds} ms"); //print ti
 
 class calc
 {
-	
-
 	public bool Isprime(uint number)
 	{
 		string temp = number.ToString();
