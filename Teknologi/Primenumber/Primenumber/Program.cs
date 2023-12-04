@@ -2,30 +2,26 @@
 calc calc = new calc();
 
 
-uint number = 2; //starting number
-int count = 0;
-var watch = new System.Diagnostics.Stopwatch();
-watch.Start();//start timer
-do
+//uint number = 2; //starting number
+//int count = 0;
+//do
+//{
+//	bool answer = calc.Isprime(number);
+//	if (answer)
+//	{
+//		count++;
+//		AnsiConsole.MarkupLine($"[green]is {number} a prime: {answer}[/]");
+//	}
+//	number++;
+//}while(number != 1000);
+//AnsiConsole.MarkupLine($"[blue]number of prime numbers in the interval: {count}[/]");
+List<uint> list = new List<uint>();
+list = calc.GetFactors(32); 
+foreach (uint item in list)
 {
-	bool answer = calc.Isprime(number);
-	if (answer)
-	{
-		count++;
-		AnsiConsole.MarkupLine($"[green]is {number} a prime: {answer}[/]");
-	}
-	number++;
-}while(number != 1000);
-watch.Stop();//turn off timer
-AnsiConsole.MarkupLine($"[blue]number of prime numbers in the interval: {count}[/]");
-Console.WriteLine($"Execution Time: {watch.ElapsedMilliseconds} ms for loop"); //print timer
-
-watch.Restart();
-
-AnsiConsole.MarkupLine($"[green]is 4294967291 a prime: {calc.Isprime(4294967291)}[/]"); //calculate the largest 32 bit prime number
-watch.Stop();//turn off timer
-
-Console.WriteLine($"Execution Time: {watch.ElapsedMilliseconds} ms"); //print timer
+	Console.WriteLine(item);
+}
+//AnsiConsole.MarkupLine($"[green]is 4294967291 a prime: {calc.Isprime(4294967291)}[/]"); //calculate the largest 32 bit prime number
 
 
 class calc
@@ -54,5 +50,48 @@ class calc
 			}
 		}
 		return true;
+	}
+
+	public List<uint> GetFactors(uint n)
+	{
+		HashSet<uint> f = new HashSet<uint>();
+		HashSet<uint> g = new HashSet<uint>();
+
+		for (uint i = 1; i <= 2 + (uint)Math.Sqrt(n); i++)
+		{
+			if (n % i == 0 && Isprime(i))
+			{
+				f.Add(i);
+			}
+		}
+
+		foreach (uint j in f)
+		{
+			if (n % j == 0 && Isprime(n / j))
+			{
+				g.Add(n / j);
+			}
+		}
+
+		if (Isprime(n))
+		{
+			f.Add(n);
+		}
+
+		f.UnionWith(g);
+
+		List<uint> sortedFactors = new List<uint>(f);
+		sortedFactors.Sort();
+
+		return sortedFactors;
+	}
+	public int MySqrt(int x)
+	{
+			for (int i = 1;  i < x; i++)
+			{
+				if (i * i == x) return i;
+				else if (i * i > x) return i-1;
+			}
+			return x;
 	}
 }
